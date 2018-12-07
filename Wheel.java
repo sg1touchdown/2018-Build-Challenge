@@ -14,7 +14,7 @@ public class Wheel implements Runnable {
 	 * class, aka Wheel.java
 	 */
 	private Spark myWheel;
-	private Spark myWheel2; // Only needed if using a second wheel
+	private Spark myWheel2; 
 
 	
 	
@@ -79,8 +79,8 @@ public class Wheel implements Runnable {
 			 */
 
 			// As an example, this sets the motors to run at half power forever.
-			myWheel.set(0.5);
-			myWheel2.set(0.5);
+			myWheel.set(0.9);
+			myWheel2.set(0.9);
 			
 			try {
 				Thread.sleep(100);
