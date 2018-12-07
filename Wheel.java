@@ -1,15 +1,9 @@
-/*package buildChallenge;
-
-public class motor1 {
-
-}
-*/
 package buildChallenge;
 
-//This import is needed for your code to know what a Spark object is and how to use it!
+
 import edu.wpi.first.wpilibj.Spark;
 
-//Confused about something or need more detail? Ask Hershal or Evan!
+
 
 //You need to remember this "implements Runnable" part or the code won't work!
 //This is going to force you to add a run() method because it is an interface. Don't worry too much about that; it's a concept we'll cover later.
@@ -22,28 +16,7 @@ public class Wheel implements Runnable {
 	private Spark myWheel;
 	private Spark myWheel2; // Only needed if using a second wheel
 
-	/*
-	 * I think you'll be able to figure out the XboxController implementation based
-	 * on the comments and your ability to infer and apply information. If you have
-	 * any questions, just ask Hershal
-	 */
-	private XboxController xbox;
-
-	/*
-	 * The comment above the constructor is called a javadoc comment, which means it
-	 * explains what a function does, any parameters it takes, and the return. Wanna
-	 * test it? Hover over Wheel and see what it says!
-	 */
-
-	/**
-	 * Refresher: This is the constructor, aka the code that is ran whenever an
-	 * instance of the Wheel object is made. This is a fancy way of saying this is
-	 * the code that runs when you use this object.
-	 * 
-	 * @param channel The channel that the Spark will be plugged into on the
-	 *                roboRIO. Remember that this is a local variable, meaning it
-	 *                only exists inside this constructor.
-	 */
+	
 	
 	public Wheel(int channelOne, int channelTwo) {
 		myWheel = new Spark(channelOne);
@@ -108,16 +81,15 @@ public class Wheel implements Runnable {
 			// As an example, this sets the motors to run at half power forever.
 			myWheel.set(0.5);
 			myWheel2.set(0.5);
-
-			// You can also use the XboxController object we made here. Ex:
-			if (xbox.getButton(XboxController.BUTTON_A)) {
-				/*
-				 * This code is ran whenever the A button on the controller is pressed. Notice
-				 * how BUTTON_A was accessed. This is how you access static information. Use the
-				 * name of the class itself, then a period, then the static variable or method
-				 * you want to access. Confused about this concept? Ask Hershal or Evan!
-				 */
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
 			}
+		
+			
+			
 
 			/*
 			 * Every thread should have a Thread.sleep which makes it wait for some
@@ -125,6 +97,9 @@ public class Wheel implements Runnable {
 			 * don't write Thread.sleep(1); All Thread.sleep calls have to be surrounded by
 			 * a try/catch, which essentially acts as a failsafe if something breaks
 			 */
+			
+			stop();
+			
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
@@ -133,19 +108,15 @@ public class Wheel implements Runnable {
 		}
 	}
 
-	/**
-	 * Pop quiz! What does this do?
-	 * 
-	 * @return
-	 */
+
 	public boolean getRunning() {
 		return running;
 	}
-
-	/**
-	 * You're all smart kids, I think you can figure out what this does!
-	 */
+	
 	public void stop() {
 		myWheel.set(0);
 		myWheel2.set(0);
 	}
+}
+
+	
